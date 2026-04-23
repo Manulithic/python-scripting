@@ -7,6 +7,6 @@ for line in result.stdout.split("\n"):
   if len(parts) > 5 and parts[-6] == "/dev/root":
     usage = int(part[-2].replace("%", ""))
     if usage > 70:
-      print ("High Disk Usage", usage, %)
+      print ("High Disk Usage", usage, "%")
     else:
-      print("Normal Disk Usage", usage, %)
+      print("Normal Disk Usage", usage, "%")
