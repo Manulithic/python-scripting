@@ -1,5 +1,5 @@
 import subprocess
-
+#subprocess is a python module that allows python to run shell commands and interact with OS
 result = subprocess.run(["df", "-h"], capture_output=True, text=True)
 
 for line in result.stdout.split("\n"):
