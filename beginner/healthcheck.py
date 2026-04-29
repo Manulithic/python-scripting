@@ -7,6 +7,10 @@ urls = sys.argv[1:]   #if you want to pass the url as command line arguments [ e
 #url = "https://www.google.com" if you want to hard code the url
 #urls = ["https://www.google.com", "https://www.facebook.com"] if you want to hard code multiple urls
 
+if len(urls) < 1:
+  print("Error: No URLs included for health check")
+  print("Example: python3 healthcheck.py https://www.google.com https://www.example.com")
+
 exit_code = 0
 
 for url in urls:
