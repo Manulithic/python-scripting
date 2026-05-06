@@ -37,7 +37,7 @@ for reservation in response['Reservations']:
       running_instances.append(instance_id)
     if state == 'stopped':
       stopped_instances.append(instance_id)
-    if state == 'terminate':
+    if state == 'terminated':
       terminated_instances.append(instance_id)
 
 print("Below are the EC2 instances in running state:")
