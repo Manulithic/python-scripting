@@ -96,5 +96,5 @@ for name in names:
           autostop = tag['Value']
       if instance_name == name and autostop == "Yes":
         print("Stopping Instance:", name)
-        ec2.stop_instances(InstanceIds=[instance_id]
+        ec2.stop_instances(InstanceIds=[instance_id])
 ------------------------------------------------------------------------------------------------------------------------------------
