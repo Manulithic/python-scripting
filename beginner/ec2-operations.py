@@ -67,7 +67,7 @@ for name in names:
       instance_id = instance['InstanceId']
       for tag in instance['Tags']:
         if tag['Key'] == 'Name' and tag['Value'] == name:
-          ec2.start_instances(InstancesIds=[instance_id])
+          ec2.start_instances(InstancesId=[instance_id])
 
 #USAGE: python3 start-instances.py <instance-name-1> <instance-name-2>......
 
