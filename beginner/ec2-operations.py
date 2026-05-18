@@ -72,4 +72,29 @@ for name in names:
 #USAGE: python3 start-instances.py <instance-name-1> <instance-name-2>......
 
 ------------------------------------------------------------------------------------------------------------------------------------
+######SCRIPT-4#######
+######To Stop Multiple Instances by it's tags#######
 
+#!/usr/bin/python3
+
+import boto3
+import sys
+
+names = sys.argv[1:]
+ec2 = boto3.client('ec2')
+result = ec2.describe_instances()
+
+for name in names:
+  for reservation in result['Reservations']:
+    for instance in reservation['Instances']:
+      instance_id = instance['InstanceId']
+      tags = instance.get('Tags', [])
+      for tag in tags:
+        if tag['Key'] == "Name":
+          instance_name = tag['Value']
+        if tag['Key'] == "Autostop":
+          autostop = tag['Value']
+      if instance_name == name and autostop == "Yes":
+        print("Stopping Instance:", name)
+        ec2.stop_instances(InstanceIds=[instance_id]
+------------------------------------------------------------------------------------------------------------------------------------
