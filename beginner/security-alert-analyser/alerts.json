@@ -1,0 +1,23 @@
+[
+  {
+    "alert_id": "A1001",
+    "severity": "HIGH",
+    "source_ip": "10.0.1.15",
+    "event_type": "SSH Brute Force",
+    "status": "OPEN"
+  },
+  {
+    "alert_id": "A1002",
+    "severity": "LOW",
+    "source_ip": "10.0.1.20",
+    "event_type": "Port Scan",
+    "status": "CLOSED"
+  },
+  {
+    "alert_id": "A1003",
+    "severity": "HIGH",
+    "source_ip": "192.168.1.5",
+    "event_type": "SQL Injection",
+    "status": "OPEN"
+  }
+]
