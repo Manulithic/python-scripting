@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getlogger()
 
 with open(file, "r") as alerts:
-  data = json.read(alerts)
+  data = json.load(alerts)
   found = False
   for alert in data:
     severity = alert['severity']
