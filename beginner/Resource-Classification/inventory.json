@@ -1,0 +1,26 @@
+[
+  {
+    "instance_id": "i-123",
+    "name": "webserver-1",
+    "environment": "prod",
+    "state": "running"
+  },
+  {
+    "instance_id": "i-456",
+    "name": "webserver-2",
+    "environment": "preprod",
+    "state": "stopped"
+  },
+  {
+    "instance_id": "i-789",
+    "name": "dbserver-1",
+    "environment": "prod",
+    "state": "stopped"
+  },
+  {
+    "instance_id": "i-789",
+    "name": "dbserver-2",
+    "environment": "preprod",
+    "state": "stopped"
+  }
+]
