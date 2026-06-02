@@ -64,3 +64,34 @@ for lb in lbs:
         logger.info(f"load balancer is not found")
 
 -------------------------------------------------------------------------------------------------------------------------
+#################SCRIPT-3#######################
+##############LIST PORTS CONFIGURED ON LB BY TAKING IT'S NAME AS INPUT##################
+
+#!/usr/bin/python3
+
+import sys
+import boto3
+import logging
+
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
+
+lbs = sys.argv[1:]
+elbv2 = boto3.client('elbv2')
+
+response = elbv2.describe_load_balancers()
+
+for lb in lbs:
+    found = False
+    for balancer in response['LoadBalancers']:
+        lb_arn = balancer['LoadBalancerArn']
+        if balancer['LoadBalancerName'] == lb:
+            found = True
+            listeners = elbv2.describe_listeners(LoadBalancerArn=lb_arn)
+            logger.info(f"fetching listeners for {lb}:")
+            for listener in listeners['Listeners']:
+                port = listener['Port']
+                print(port)
+    if not found:
+        logger.info(f"load balancer {lb} not found")
