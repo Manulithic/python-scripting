@@ -74,3 +74,41 @@ try:
     logger.info(f"created bucket {bucket_name} successfully")
 except Exception as e:
     logger.info(f"ERROR: CREATING BUCKET: {str(e)}")
+
+
+----------------------------------------------------------------------------------
+######SCRIPT-4########
+######CHECK IF OBJECT EXISTS IN S3 BUCKET#######
+----------------------------------------------------------------------------------
+
+#!/usr/bin/python3
+
+
+import boto3
+import logging
+import sys
+from botocore.exceptions import ClientError
+
+s3 = boto3.client('s3')
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
+
+def check_object(bucket_name, file_name):
+    try:
+        s3.head_object(Bucket=bucket_name, Key=file_name)
+        logger.info(f"found object {file_name} in bucket {bucket_name}")
+        return True
+    except ClientError as e:
+        error_code = e.response['Error']['Code']
+        if error_code == '404':
+            logger.info(f"object {file_name} not found")
+            return False
+        raise
+
+def main():
+    bucket_name = sys.argv[1]
+    file_name = sys.argv[2]
+    check_object(bucket_name, file_name)
+
+if __name__ == "__main__":
+    main()
